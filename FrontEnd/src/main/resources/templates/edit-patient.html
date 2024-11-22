@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+<head>
+<meta charset="UTF-8">
+<title>Modifier</title>
+</head>
+<body>
+	<h1>Modifier les informations du patient</h1>
+	<form th:action="@{/patients/update}" th:object="${patient}" method="post"><input type="hidden" th:field="*{id}"/>
+        <div>
+            <label for="prenom">Prénom :</label>
+            <input type="text" id="prenom" name="prenom" th:value="*{prenom}" required>
+        </div>
+        <div>
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" name="nom" th:value="*{nom}" required>
+        </div>
+        <div>
+            <label for="dateDeNaissance">Date de Naissance :</label>
+            <input type="date" id="dateDeNaissance" name="dateDeNaissance" th:value="*{dateDeNaissance}" required>
+        </div>
+        <div>
+            <label for="genre">Genre :</label>
+            <select id="genre" name="genre" th:value="*{genre}">
+                <option value="M" th:selected="*{genre == 'M'}">Masculin</option>
+                <option value="F" th:selected="*{genre == 'F'}">Féminin</option>
+            </select>
+        </div>
+        <div>
+            <label for="adresse">Adresse :</label>
+            <input type="text" id="adresse" name="adresse" th:value="*{adresse}">
+        </div>
+        <div>
+            <label for="telephone">Téléphone :</label>
+            <input type="tel" id="telephone" name="telephone" th:value="*{telephone}">
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+            <a href="/patients" class="btn btn-secondary grey-btn">Annuler</a>
+        </div>
+    </form>
+</body>
+</html>
