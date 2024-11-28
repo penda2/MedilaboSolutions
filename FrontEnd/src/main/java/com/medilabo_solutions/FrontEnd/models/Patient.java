@@ -1,6 +1,7 @@
 package com.medilabo_solutions.FrontEnd.models;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 public class Patient {
 
@@ -67,4 +68,11 @@ public class Patient {
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
+	
+	public int getAge() {
+        if (this.dateDeNaissance != null) {
+            return Period.between(this.dateDeNaissance, LocalDate.now()).getYears();
+        }
+        return 0;
+    }
 }

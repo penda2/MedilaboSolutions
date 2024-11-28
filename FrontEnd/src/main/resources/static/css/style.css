@@ -4,118 +4,205 @@ body {
 	font-family: 'Inter', sans-serif;
 	margin: 0;
 	padding: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 18px;
-    text-align: left;
+	width: 95%;
+	border-collapse: collapse;
+	margin: auto;
+	text-align: left;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 table th, table td {
-    border: 1px solid #ddd;
-    padding: 8px;
+	border: 1px solid #ddd;
+	padding: 8px;
 }
 
 table th {
-    background-color: #f4f4f4;
-    font-weight: bold;
-    text-align: center;
+	background-color: #f4f4f4;
+	font-weight: bold;
+	text-align: center;
 }
 
 table tr:nth-child(even) {
-    background-color: #f9f9f9;
+	background-color: #f9f9f9;
 }
 
 table tr:hover {
-    background-color: #f1f1f1;
+	background-color: #f1f1f1;
+}
+
+.notes-block {
+	display: flex;
+	justify-content: space-between;
 }
 
 .btn {
-    display: inline-block;
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    text-align: center;
+	display: inline-block;
+	color: #007bff;
+	text-decoration: none;
+	text-align: center;
+	inline-size: max-content;
 }
 
 .btn:hover {
-    background-color: #0056b3;
+	cursor: pointer;
 }
 
 .container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	max-width: 800px;
+	margin: 20px auto;
+	padding: 20px;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#container-flex {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	max-width: 230px;
+	margin: auto;
+	padding: 20px;
 }
 
 h1 {
-    text-align: center;
-    color: #444;
+	text-align: center;
+	color: #444;
 }
 
-.patient-details p {
-    margin: 10px 0;
-    font-size: 18px;
-}
-
-.patient-details p strong {
-    color: #555;
-}
-
-.actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
-}
-.btn-red {
-    background-color: #d90412;
-}
-
-.btn-primary {
-    background-color: #007bff;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-
-.btn-secondary {
-    background-color: #6c757d;
+.btn-primary:hover, .btn-success:hover {
+	border-bottom: 2px solid #024083;
+	cursor: pointer;
+	color: #024083;
 }
 
 .btn-secondary:hover {
-    background-color: #5a6268;
+	background-color: #5a6268;
+}
+
+.btn-secondary {
+	background-color: #6c757d;
+	display: inline-block;
+	padding: 10px 20px;
+	text-decoration: none;
+	color: white;
+	border-radius: 5px;
+	text-align: center;
+}
+
+.btn-secondary-blue {
+	margin: 0;
+	background-color: #007bff;
+	font-size: 16px;
+	border: none;
+	margin: 0 15px;
+}
+
+.btn-secondary-blue:hover {
+	background-color: #024083;
+}
+
+.btn-edit {
+	background-color: #007bff;
+	color: white;
+	border: none;
+	width: auto;
+	padding: 10px 20px;
+	border-radius: 5px;
+	font-size: 16px;
+	margin-right: 20px;
+}
+
+.btn-edit:hover {
+	background-color: #024083;
+}
+
+.add-note-p {
+	font-weight: bold;
+}
+
+.add-note-span {
+	font-weight: normal;
+}
+
+#noteContent {
+	width: 100%;
+	min-height: 100px;
+	margin-bottom: 10px;
 }
 
 form {
-    width: 50%;
-    margin: auto;
+	width: 50%;
+	margin: auto;
 }
 
 form div {
-    margin-bottom: 15px;
+	margin-bottom: 15px;
 }
 
 label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
+	display: block;
+	font-weight: bold;
+	margin-bottom: 5px;
 }
 
 input, select, button {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
+	width: 100%;
+	padding: 8px;
+	margin-top: 5px;
+	box-sizing: border-box;
 }
-.grey-btn{
+
+.grey-btn {
 	margin-top: 15px;
+	width: auto;
+}
+
+.fa-pen, .fa-plus, .fa-list-ul, .fa-rectangle-list, .fa-eye {
+	margin-right: 5px;
+}
+
+.fa-list-ol {
+	margin-right: 8px;
+	color: white;
+}
+
+li {
+	margin-bottom: 8px;
+}
+
+.btn-space {
+	margin-right: 15px;
+}
+
+.left-space {
+	float: right;
+}
+
+.edit-fa-pen-blue .fa-solid {
+	color: #007bff;
+}
+
+.success-message {
+	color: green;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.error-message {
+	color: red;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.container-edit {
+	margin-top: 40px;
 }

@@ -37,18 +37,17 @@ public class PatientController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Patient> getPatientById(@PathVariable String id) {
+	public ResponseEntity<Patient> getPatientById(@PathVariable Integer id) {
 		return patientService.getPatientById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Patient> updatePatient(@PathVariable String id, @RequestBody Patient updatedPatient) {
+	public ResponseEntity<Patient> updatePatient(@PathVariable Integer id, @RequestBody Patient updatedPatient) {
 		try {
 			Patient patient = patientService.updatePatient(id, updatedPatient);
-			return ResponseEntity.ok(patient);
+			return ResponseEntity.status(HttpStatus.CREATED).body(patient);
 		} catch (ResourceNotFoundException e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 		}
 	}
-
 }

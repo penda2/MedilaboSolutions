@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<head>
+<meta charset="UTF-8">
+<title>Liste des Notes</title>
+</head>
+<body>
+	<h1>Liste des Notes</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Patient ID</th>
+				<th>Contenu de la Note</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="note : ${notes}">
+				<td th:text="${note.patientId}"></td>
+				<td th:text="${note.noteContent}"></td>
+				<td class="notes-block">
+					<a th:href="@{'/patients/details/' + ${note.patientId}}" class="btn btn-success">Afficher Patient</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="container">
+		<a href="/patients" class="btn btn-secondary">
+			<i class="fa-solid fa-list-ol"></i>Retour à la liste des patients
+		</a>
+
+	</div>
+</body>
+</html>

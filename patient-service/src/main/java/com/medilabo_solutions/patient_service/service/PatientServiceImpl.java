@@ -26,12 +26,12 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 	@Override
-	public Optional<Patient> getPatientById(String id) {
+	public Optional<Patient> getPatientById(Integer id) {
 		return patientRepository.findById(id);
 	}
 
 	@Override
-	public Patient updatePatient(String id, Patient updatedPatient) {
+	public Patient updatePatient(Integer id, Patient updatedPatient) {
 		return patientRepository.findById(id).map(existingPatient -> {
 			existingPatient.setPrenom(
 					updatedPatient.getPrenom() != null ? updatedPatient.getPrenom() : existingPatient.getPrenom());
@@ -51,5 +51,4 @@ public class PatientServiceImpl implements PatientService {
 		}).orElseThrow(() -> new com.medilabo_solutions.patient_service.exceptions.ResourceNotFoundException(
 				"Patient avec l'id " + id + " n'existe pas."));
 	}
-
 }

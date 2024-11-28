@@ -8,7 +8,10 @@ import com.medilabo_solutions.patient_service.model.Patient;
 public interface PatientService {
 
 	Patient savePatient(Patient patient);
+	
 	List<Patient> getAllPatients();
-	Optional<Patient> getPatientById(String id);
-	Patient updatePatient(String id, Patient updatedPatient);
+	
+	Optional<Patient> getPatientById(Integer id);
+	
+	Patient updatePatient(Integer id, Patient updatedPatient);
 }

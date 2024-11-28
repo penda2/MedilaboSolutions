@@ -1,4 +1,4 @@
-package com.medilabo_solutions.FrontEnd.config;
+package com.medilabo_solutions.patient_notes.medical_note.config;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -7,23 +7,15 @@ import java.util.ArrayList;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.web.client.RestTemplate;
 
 @Configuration
-@EnableWebSecurity
-public class RestTemplateConfig {
-
-	@Bean
-	public RestTemplate restTemplate() {
-		return new RestTemplate();
-	}
+public class SecurityConfig {
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -48,5 +40,4 @@ public class RestTemplateConfig {
 
 		return http.build();
 	}
-
 }

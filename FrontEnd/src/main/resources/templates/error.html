@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<head>
+<title>Erreur</title>
+</head>
+<body>
+	<div class="error-container">
+		<h1>Une erreur est survenue</h1>
+		<p><strong>Message :</strong> <span th:text="${error}">Message non spécifié</span></p>
+		<p th:if="${message != null}"><strong>Détails :</strong> <span th:text="${message}"></span></p>
+		<a href="/patients" class="btn btn-primary">Retour à la liste des patients</a>
+	</div>
+</body>
+</html>
