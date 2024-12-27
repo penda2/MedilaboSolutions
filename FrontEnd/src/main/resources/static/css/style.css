@@ -13,7 +13,7 @@ body {
 table {
 	width: 95%;
 	border-collapse: collapse;
-	margin: auto;
+	margin-bottom: 10px;
 	text-align: left;
 	border-radius: 8px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -41,11 +41,18 @@ table tr:hover {
 .notes-block {
 	display: flex;
 	justify-content: space-between;
+	margin-top:20px;
+}
+
+.bottom-block {
+	display: flex;
+	justify-content: center;
+	margin-top:20px;
 }
 
 .btn {
 	display: inline-block;
-	color: #007bff;
+	color: #0265cf;
 	text-decoration: none;
 	text-align: center;
 	inline-size: max-content;
@@ -57,7 +64,6 @@ table tr:hover {
 
 .container {
 	max-width: 800px;
-	margin: 20px auto;
 	padding: 20px;
 	background: #fff;
 	border-radius: 8px;
@@ -73,9 +79,20 @@ table tr:hover {
 	padding: 20px;
 }
 
-h1 {
+h1, .center {
 	text-align: center;
-	color: #444;
+}
+
+h1, h2, h3 {
+	color: #0526c7;
+}
+
+.p-blue {
+	margin-top: 20px;
+	color: #0526c7;
+	font-weight: bold;
+	font-size: 20px;
+	margin-bottom: 0;
 }
 
 .btn-primary:hover, .btn-success:hover {
@@ -100,7 +117,7 @@ h1 {
 
 .btn-secondary-blue {
 	margin: 0;
-	background-color: #007bff;
+	background-color: #0265cf;
 	font-size: 16px;
 	border: none;
 	margin: 0 15px;
@@ -111,7 +128,7 @@ h1 {
 }
 
 .btn-edit {
-	background-color: #007bff;
+	background-color: #0265cf;
 	color: white;
 	border: none;
 	width: auto;
@@ -119,6 +136,7 @@ h1 {
 	border-radius: 5px;
 	font-size: 16px;
 	margin-right: 20px;
+	margin-top: 15px;
 }
 
 .btn-edit:hover {
@@ -188,7 +206,7 @@ li {
 }
 
 .edit-fa-pen-blue .fa-solid {
-	color: #007bff;
+	color: #0265cf;
 }
 
 .success-message {
@@ -201,8 +219,4 @@ li {
 	color: red;
 	font-weight: bold;
 	margin-bottom: 10px;
-}
-
-.container-edit {
-	margin-top: 40px;
 }

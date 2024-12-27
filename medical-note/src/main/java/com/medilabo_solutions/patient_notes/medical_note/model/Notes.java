@@ -3,6 +3,7 @@ package com.medilabo_solutions.patient_notes.medical_note.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+// Entité stockée dans une collection de la base de données (MongoDB)
 @Document(collection = "notes")
 public class Notes {
 	@Id

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
 <link rel="stylesheet" th:href="@{/css/style.css}" />
 <head>
 <title>Historique du Patient</title>
@@ -13,7 +13,7 @@
 		<li th:each="note : ${notes}"><span th:text="${note.noteContent}"></span></li>
 	</ul>
 	<div class="container">
-		<a href="/patients" class="btn btn-secondary light-grey">Retour à la liste</a> 
+		<a href="/patients" class="btn btn-secondary light-grey">Liste des patients</a> 
 		<a th:href="@{/patients/addNote(patientId=${patient.id})}" class="btn btn-secondary btn-secondary-blue">
 			<i class="fa-solid fa-plus"></i>Nouvelle note
 		</a>

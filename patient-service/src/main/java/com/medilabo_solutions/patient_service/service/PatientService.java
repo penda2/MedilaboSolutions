@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.medilabo_solutions.patient_service.model.Patient;
 
+//interface définissant les méthodes disponibles pour les opérations liées à l'entité
 public interface PatientService {
 
 	Patient savePatient(Patient patient);

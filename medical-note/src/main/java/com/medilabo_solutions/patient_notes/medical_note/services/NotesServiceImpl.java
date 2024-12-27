@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.medilabo_solutions.patient_notes.medical_note.model.Notes;
 import com.medilabo_solutions.patient_notes.medical_note.repository.NoteRepository;
 
+
+// classe utilisant le repository pour récupérer les données depuis la base de données
 @Service
 public class NotesServiceImpl implements NotesService {
 

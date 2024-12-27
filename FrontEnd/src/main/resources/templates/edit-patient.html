@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
 <link rel="stylesheet" th:href="@{/css/style.css}" />
 <head>
 <meta charset="UTF-8">
@@ -7,6 +7,12 @@
 </head>
 <body>
 	<h1 class="container">Modifier les informations du patient</h1>
+	<div class="container" th:if="${successMessage}">
+        <p class="success-message" th:text="${successMessage}"></p>
+    </div>
+    <div class="err-msg-edit" th:if="${errorMessage}">
+        <p class="error-message" th:text="${errorMessage}"></p>
+    </div>
 	<form th:action="@{/patients/edit}" th:object="${patient}" method="post"><input type="hidden" th:field="*{id}"/>
         <div>
             <label for="prenom">Prénom :</label>
@@ -35,9 +41,9 @@
             <label for="telephone">Téléphone :</label>
             <input type="tel" id="telephone" name="telephone" th:value="*{telephone}">
         </div>
-        <div>
+        <div class="bottom-block">
             <button type="submit" class="btn-edit">Enregistrer</button>
-            <a href="/patients" class="btn btn-secondary grey-btn">Annuler</a>
+            <a href="/patients" class="btn btn-secondary grey-btn">Liste des patients</a>
         </div>
     </form>
 </body>

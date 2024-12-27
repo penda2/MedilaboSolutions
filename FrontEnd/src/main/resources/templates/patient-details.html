@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
 <link rel="stylesheet" th:href="@{/css/style.css}">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 <head>
@@ -7,29 +7,50 @@
 <title>Détails du Patient</title>
 </head>
 <body>
-	<h1>Informations du Patient</h1>
 	<div class="container">
+		<h1 class="center">Informations du Patient</h1>
 		<div>
-			<a th:href="'/patients/edit/' + ${patient.id}"class="btn btn-primary left-space">
-				<i class="fa-solid fa-pen"></i>Modifier
+			<a th:href="'/patients/edit/' + ${patient.id}"
+				class="btn btn-primary left-space"> <i class="fa-solid fa-pen"></i>Modifier
 			</a>
 		</div>
-		<p><strong>Nom :</strong> <span th:text="${patient.nom}"></span></p>
-		<p><strong>Prénom :</strong> <span th:text="${patient.prenom}"></span></p>
-		<p><strong>Date de Naissance :</strong> <span th:text="${patient.dateDeNaissance}"></span></p>
-		<p><strong>Âge:</strong> <span th:text="${patient.age}"></span></p>
-		<p><strong>Adresse :</strong> <span th:text="${patient.adresse}"></span></p>
-		<p><strong>Téléphone :</strong> <span th:text="${patient.telephone}"></span></p>		
+		<p>
+			<strong>Nom :</strong> <span th:text="${patient.nom}"></span>
+		</p>
+		<p>
+			<strong>Prénom :</strong> <span th:text="${patient.prenom}"></span>
+		</p>
+		<p>
+			<strong>Date de Naissance :</strong> <span
+				th:text="${patient.dateDeNaissance}"></span>
+		</p>
+		<p>
+			<strong>Âge:</strong> <span th:text="${patient.age}"></span>
+		</p>
+		<p>
+			<strong>Adresse :</strong> <span th:text="${patient.adresse}"></span>
+		</p>
+		<p>
+			<strong>Téléphone :</strong> <span th:text="${patient.telephone}"></span>
+		</p>
 		<div class="container-edit">
-			<p><strong>Observations :</strong></p>
+			<p class="p-blue">Notes d'observation :</p>
 			<ul>
-				<li th:each="note : ${notes}"><span th:text="${note.noteContent}"></span></li>
+				<li th:each="note : ${notes}"><span
+					th:text="${note.noteContent}"></span></li>
 			</ul>
+		</div>
+		<div>
+			<p class="p-blue">Évaluation des risques :</p>
+			<p>
+				<strong>Niveau de risque :</strong> 
+				<span th:text="${riskEvaluation.risqueLevel}">Non évalué</span>
+			</p>
 		</div>
 	</div>
 	<div class="notes-block">
 		<a href="/patients/notes" class="btn btn-secondary btn-space">Liste des notes</a> 
-		<a href="/patients" class="btn btn-secondary btn-space">Liste des patients</a>
+		<a href="/patients" class="btn btn-secondary btn-space">Liste des patients</a> 
 		<a th:href="@{/patients/historique/{id}(id=${patient.id})}" class="btn btn-secondary">Notes du patient</a>
 	</div>
 </body>

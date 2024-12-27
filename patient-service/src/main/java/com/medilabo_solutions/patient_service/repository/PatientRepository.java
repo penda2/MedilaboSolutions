@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.medilabo_solutions.patient_service.model.Patient;
 
+// Repository de gestion des interactions avec la base de données (MySql)
 @Repository
 public interface PatientRepository extends JpaRepository<Patient,Integer >{
 

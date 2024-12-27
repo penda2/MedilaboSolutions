@@ -1,5 +1,6 @@
 package com.medilabo_solutions.FrontEnd.models;
 
+// Entité définie pour correspondre à la structure existante dans le micro service note.
 public class Notes {
 	
 	private String id;

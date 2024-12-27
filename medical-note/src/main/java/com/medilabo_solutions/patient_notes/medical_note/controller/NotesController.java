@@ -21,6 +21,7 @@ public class NotesController {
 
 	private final NotesService notesService;
 
+	// Injection de dépendance
 	@Autowired
 	public NotesController(NotesService notesService) {
 		this.notesService = notesService;

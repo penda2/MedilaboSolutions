@@ -1,0 +1,105 @@
+services:
+  gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+    environment:
+      - PATIENT_SERVICE_URL=http://patient-service:8081
+      - NOTES_SERVICE_URL=http://medical-note:8083
+      - RISK_SERVICE_URL=http://patient-risk:8084
+      - FRONTEND_SERVICE_URL=http://frontend:8082    
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    networks:
+      - app-network
+    environment:
+      - GATEWAY_URL=http://gateway:8080
+
+  patient-db:
+    image: mysql:8.0
+    container_name: patient-db
+    environment:
+      MYSQL_DATABASE: patientdb
+      MYSQL_ROOT_PASSWORD: root 
+      TZ: UTC
+    ports:
+      - "3307:3306"
+    volumes:
+        - patient-db-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    networks:
+      - app-network
+
+  patient-service:
+    build:
+      context: ./patient-service
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://patient-db:3306/patientdb
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+    depends_on:
+      patient-db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    networks:
+      - app-network
+   
+  medical-note:
+    build:
+      context: ./medical-note
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8083"
+    networks:
+      - app-network
+    links:
+      - medical-note-db
+
+  medical-note-db:
+    image: mongo:5.0
+    container_name: medical-note-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - medical-note-data:/data/db
+    networks:
+      - app-network
+
+  patient-risk:
+    build:
+      context: ./patient-risk
+      dockerfile: Dockerfile
+    ports:
+      - "8084:8084"
+    environment:
+      - PATIENT_SERVICE_URL=http://patient-service:8081
+      - NOTES_SERVICE_URL=http://medical-note:8083
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+    attachable: true
+volumes:
+  patient-db-data:
+  medical-note-data:

@@ -6,8 +6,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+// entité représentant une table dans la base de données MySql 
 @Entity
+@Table(name = "patient")
 public class Patient {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -61,7 +64,5 @@ public class Patient {
 	}
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
-	}
-
-	
+	}	
 }

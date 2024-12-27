@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
 <link rel="stylesheet" th:href="@{/css/style.css}">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 <head>
@@ -7,16 +7,22 @@
 </head>
 <body>
 	<h1 class="container">Ajouter une Note</h1>
-	<p class="add-note-p"> Patient : 
+	<div class="container" th:if="${successMessage}">
+        <p class="success-message" th:text="${successMessage}"></p>
+    </div>
+    <div class="err-msg-edit" th:if="${errorMessage}">
+        <p class="error-message" th:text="${errorMessage}"></p>
+    </div>
+	<h2 class="add-note-p"> Patient : 
 		<span class="add-note-span" th:text="${patient.prenom} + ' ' + ${patient.nom}"></span>
-	</p>
+	</h2>
 	<form th:action="@{/patients/addNote}" method="post">
 		<input type="hidden" name="patientId" th:value="${patient.id}" /> 
 		<label for="noteContent">Note d'observation:</label>
 		<textarea id="noteContent" name="noteContent" required></textarea>
-		<div id="container-flex">
-			<a href="/patients" class="btn btn-secondary">Annuler</a>
-			<button type="submit" class="btn btn-secondary btn-secondary-blue">Enregistrer</button>
+		<div class="bottom-block">
+			<button type="submit" class="btn-edit">Enregistrer</button>
+			<a href="/patients" class="btn btn-secondary grey-btn">Liste des patients</a>
 		</div>
 	</form>
 </body>

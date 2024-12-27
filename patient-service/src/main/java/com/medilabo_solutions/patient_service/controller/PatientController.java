@@ -21,26 +21,31 @@ import com.medilabo_solutions.patient_service.service.PatientService;
 @RequestMapping("/api/patients")
 public class PatientController {
 
+	// Injection de dépendance
 	@Autowired
 	private PatientService patientService;
 
+	// methode de création d'un patient
 	@PostMapping
 	public ResponseEntity<Patient> createPatient(@RequestBody Patient patient) {
 		Patient savedPatient = patientService.savePatient(patient);
 		return ResponseEntity.status(HttpStatus.CREATED).body(savedPatient);
 	}
 
+	// récupère tous les patients 
 	@GetMapping
 	public ResponseEntity<List<Patient>> getAllPatients() {
 		List<Patient> patients = patientService.getAllPatients();
 		return ResponseEntity.ok(patients);
 	}
 
+	// récupère le patient par son id  
 	@GetMapping("/{id}")
 	public ResponseEntity<Patient> getPatientById(@PathVariable Integer id) {
 		return patientService.getPatientById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
 	}
 
+	// modifie le patient par son id  
 	@PutMapping("/{id}")
 	public ResponseEntity<Patient> updatePatient(@PathVariable Integer id, @RequestBody Patient updatedPatient) {
 		try {

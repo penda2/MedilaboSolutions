@@ -3,6 +3,7 @@ package com.medilabo_solutions.FrontEnd.models;
 import java.time.LocalDate;
 import java.time.Period;
 
+// Entité définie pour correspondre à la structure existante dans le micro service Patient.
 public class Patient {
 
 	private String id;

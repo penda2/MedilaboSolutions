@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.medilabo_solutions.patient_service.model.Patient;
 import com.medilabo_solutions.patient_service.repository.PatientRepository;
 
+// Classe utilisant le repository pour interagir avec la base de données
 @Service
 public class PatientServiceImpl implements PatientService {
 
